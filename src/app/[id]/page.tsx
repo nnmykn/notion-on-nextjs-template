@@ -17,24 +17,21 @@ export default async function Post({
     return <div />
   }
   return (
-    <div>
-      <article>
+    <div className={'flex justify-center'}>
+      <article className={'w-5/6'}>
         <h1>
-          <>
-            {'properties' in page &&
-            'Name' in page.properties &&
-            'title' in page.properties.Name ? (
-              <p>{page.properties.Name.title.map((textItem) => textItem.plain_text).join('')}</p>
-            ) : (
-              'データが不足しています。'
-            )}
-          </>
+          {'properties' in page && 'Name' in page.properties && 'title' in page.properties.Name ? (
+            <h1 className={'text-4xl font-bold'}>
+              {page.properties.Name.title.map((textItem) => textItem.plain_text).join('')}
+            </h1>
+          ) : (
+            'データが不足しています。'
+          )}
         </h1>
         <section>
           {blocks.map((block: { [x: string]: any; id: any; children?: any; type?: any }) => (
             <Fragment key={block.id}>{renderBlock(block)}</Fragment>
           ))}
-          <Link href='/'>← Go home</Link>
         </section>
       </article>
     </div>
