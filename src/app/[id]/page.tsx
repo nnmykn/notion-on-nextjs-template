@@ -2,6 +2,8 @@ import {getBlocks, getPage} from "@/lib/notion";
 import {createElement, Fragment, Key} from "react";
 import Link from "next/link";
 
+export const runtime = 'edge';
+
 export default async function Post({params}: {
     params: {
         id: string
