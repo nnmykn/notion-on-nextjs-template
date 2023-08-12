@@ -1,5 +1,5 @@
-import {getDatabase} from '@/lib/notion'
 import Link from 'next/link'
+import {getDatabase} from '@/lib/notion'
 
 export default async function Home() {
     const posts = await getDatabase()
