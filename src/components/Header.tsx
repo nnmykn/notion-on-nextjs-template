@@ -2,9 +2,9 @@ import Link from 'next/link'
 
 export default async function Header() {
   return (
-    <header className={'h-16 px-3 border-2 flex items-center'}>
+    <header className={'h-16 px-3 flex items-center justify-center'}>
       <Link href='/'>
-        <h1>Notion on Next.js</h1>
+        <img src='/logo.svg' alt='logo' className={'h-8'} />
       </Link>
     </header>
   )
