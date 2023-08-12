@@ -57,16 +57,31 @@ type TextType = {
 }[];
 
 
-const Text = ({text}: {
-    text: TextType
-}) => {
-    if (!text) return null;
-
-    return text.map(({annotations: {color}, content, link}) => (
-        <span style={color !== "default" ? {color} : {}} key={content}>
-            {link ? <a href={link.url}>{content}</a> : content}
-        </span>
-    ));
+const Text = ({text}: any) => {
+    if (!text) {
+        return null;
+    }
+    return text.map((value: any) => {
+        const {
+            annotations: {bold, code, color, italic, strikethrough, underline},
+            text,
+        } = value;
+        return (
+            <span
+                className={[
+                    bold ? "text-bold" : "",
+                    code ? "text-code" : "",
+                    italic ? "italic" : "",
+                    strikethrough ? "line-through" : "",
+                    underline ? "underline" : "",
+                ].join(" ")}
+                style={color !== "default" ? {color} : {}}
+                key={text.content}
+            >
+        {text.link ? <a href={text.link.url}>{text.content}</a> : text.content}
+      </span>
+        );
+    });
 };
 
 const renderHeader = (text: {
@@ -101,7 +116,11 @@ const renderBlock = (block: {
 
     switch (type) {
         case "paragraph":
-            return <p><Text text={value.rich_text}/></p>;
+            return (
+                <p>
+                    <Text text={value.rich_text}/>
+                </p>
+            );
         case "heading_1":
             return (
                 <h1>
