@@ -1,5 +1,4 @@
 import {Client} from "@notionhq/client";
-import {randomInt} from 'crypto';
 
 const notion = new Client({
     auth: process.env.NOTION_TOKEN,
@@ -39,7 +38,7 @@ export const getBlocks = async (blockId: string) => {
                     acc[acc.length - 1][acc[acc.length - 1].type].children?.push(curr);
                 } else {
                     acc.push({
-                        id: randomInt(10 ** 99, 10 ** 100).toString(),
+                        id: getRandomInt(10 ** 99, 10 ** 100).toString(),
                         type: "bulleted_list",
                         bulleted_list: {children: [curr]},
                     });
@@ -49,7 +48,7 @@ export const getBlocks = async (blockId: string) => {
                     acc[acc.length - 1][acc[acc.length - 1].type].children?.push(curr);
                 } else {
                     acc.push({
-                        id: randomInt(10 ** 99, 10 ** 100).toString(),
+                        id: getRandomInt(10 ** 99, 10 ** 100).toString(),
                         type: "numbered_list",
                         numbered_list: {children: [curr]},
                     });
@@ -61,3 +60,9 @@ export const getBlocks = async (blockId: string) => {
         }, []);
     });
 };
+
+function getRandomInt(min: number, max: number): number {
+    min = Math.ceil(min);
+    max = Math.floor(max);
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+}

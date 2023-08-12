@@ -1,6 +1,7 @@
 import {getDatabase} from "@/lib/notion";
 import Link from "next/link";
 
+
 export default async function Home() {
     const posts = await getDatabase();
 
