@@ -25,7 +25,7 @@ export default async function Post({
               {page.properties.Name.title.map((textItem) => textItem.plain_text).join('')}
             </h1>
           ) : (
-            'データが不足しています。'
+            ''
           )}
         </h1>
         <section>
