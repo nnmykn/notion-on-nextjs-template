@@ -8,7 +8,7 @@
     "start": "next start",
     "lint": "next lint --dir src",
     "lint:fix": "yarn lint --fix",
-    "format": "prettier --write --ignore-path .gitignore './**/*.{js,jsx,ts,tsx,json}'"
+    "format": "prettier --write ."
   },
   "dependencies": {
     "@cloudflare/next-on-pages": "^1.5.0",
